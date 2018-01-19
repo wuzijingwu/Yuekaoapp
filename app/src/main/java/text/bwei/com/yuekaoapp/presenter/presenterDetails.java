@@ -17,6 +17,19 @@ public class presenterDetails {
         idetailsmodel = new model();
     }
 
+
+    public void Destory(){
+        if (idetailsview != null) {
+            idetailsview = null;
+        }
+
+    }
+
+
+
+
+
+
     public void getOkDetails(String url, int pid) {
         idetailsmodel.RequestDetails(url, pid, new OnselectDetails() {
             @Override

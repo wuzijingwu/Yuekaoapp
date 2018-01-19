@@ -37,6 +37,7 @@ public class ThreeActivity extends AppCompatActivity implements Idetailsview {
     Button buy_now;
     @BindView(R.id.add_cart)
     Button add_cart;
+    private text.bwei.com.yuekaoapp.presenter.presenterDetails presenterDetails;
 
     //    private int pid;
 
@@ -48,7 +49,7 @@ public class ThreeActivity extends AppCompatActivity implements Idetailsview {
         ButterKnife.bind(this);
 //        EventBus.getDefault().register(this);
         //应该获取pid
-        presenterDetails presenterDetails = new presenterDetails(this);
+        presenterDetails = new presenterDetails(this);
         presenterDetails.getOkDetails(Apidetails.DETAILSURL, 5);
         buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +75,15 @@ public class ThreeActivity extends AppCompatActivity implements Idetailsview {
 //        super.onDestroy();
 //        EventBus.getDefault().unregister(this);
 //    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (presenterDetails != null) {
+            presenterDetails.Destory();
+        }
+    }
 
     @Override
     public void shouDetails(DetailsBean.DataBean list) {
